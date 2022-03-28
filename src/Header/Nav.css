@@ -1,0 +1,22 @@
+
+.header-div{
+    background-color: skyblue;
+    height: 75px;
+}
+.nav-ul{
+    display: flex;
+    list-style: none;
+    text-align: center;
+    justify-content: space-evenly;
+}
+.nav-ul li{
+    text-decoration: none !important;
+    padding-top: 25px;
+}
+.footer-div{
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background-color: skyblue;
+}
