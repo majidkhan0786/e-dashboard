@@ -1,43 +1,81 @@
-import React, {useState} from "react";
-import "../Header/Nav.css"
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "../Header/Nav.css";
+import { useNavigate } from "react-router-dom";
+
 const SignUp = () => {
+  const [name, setName] = useState(" ");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const Navigate = useNavigate();
 
-    const [name, setName] = useState(" ");
-    const [email, setEmail] = useState("");
-    const [password, setPassword]= useState("");
+  useEffect(()=>{
+      const auth = localStorage.getItem('userSignupData');
+      if(auth){
+          Navigate('/')
+      }
+  })
 
-    const RegisterData = ()=>{
-        console.log(name, email, password);
-    }
+  const RegisterData = () => {
+    // console.log(name, email, password);
+    var data = JSON.stringify({
+      name: name,
+      email: email,
+      password: password,
+    });
+
+    var config = {
+      method: "post",
+      url: "http://localhost:5000/register",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+ axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      localStorage.setItem('userSignupData',JSON.stringify(data));
+    // After SignUp it will Redirect on Product Listing Page (Home Page)
+      Navigate("/");
+  };
+
   return (
     <>
       <div className="register-page-div">
-        <h1>User REgister </h1>
+        <h1 style={{textAlign: "center"}}>User REgister </h1>
         <input
           type="email"
           className="form-control"
           id="exampleInputEmail1"
           placeholder="Enter User Name"
           value={name}
-          onChange={(e)=>setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
         />
-         <input
+        <input
           type="email"
           className="form-control"
           id="exampleInputEmail1"
           placeholder="Enter email"
           value={email}
-          onChange={(e)=>setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
-         <input
-          type="email"
+        <input
+          type="password"
           className="form-control"
           id="exampleInputEmail1"
           placeholder="Enter Password"
           value={password}
-          onChange={(e)=>setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <button onClick={RegisterData}  className="btn btn-primary mt-3">Sign Up </button>
+        <button onClick={RegisterData} className="btn btn-primary mt-3">
+          Sign Up
+        </button>
       </div>
     </>
   );
