@@ -14,7 +14,6 @@ const Login = () => {
   });
 
   const HandleLogin = () => {
-    console.log(email, password);
     var data = JSON.stringify({
       email: email,
       password: password,
@@ -51,6 +50,7 @@ const Login = () => {
             placeholder="Enter Email..."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <input
             type="password"
@@ -59,6 +59,7 @@ const Login = () => {
             placeholder="Enter Password..."
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <button onClick={HandleLogin} className="btn btn-primary mt-3">
             Login
@@ -68,5 +69,4 @@ const Login = () => {
     </>
   );
 };
-
 export default Login;

@@ -4,9 +4,12 @@ import "../Header/Nav.css";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
-  const [name, setName] = useState(" ");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+
+
   const Navigate = useNavigate();
 
   useEffect(()=>{
@@ -17,7 +20,7 @@ const SignUp = () => {
   })
 
   const RegisterData = () => {
-    // console.log(name, email, password);
+    console.log(name, email, password);
     var data = JSON.stringify({
       name: name,
       email: email,
@@ -50,12 +53,13 @@ const SignUp = () => {
       <div className="register-page-div">
         <h1 style={{textAlign: "center"}}>User REgister </h1>
         <input
-          type="email"
+          type="text"
           className="form-control"
           id="exampleInputEmail1"
           placeholder="Enter User Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
         <input
           type="email"
@@ -64,6 +68,7 @@ const SignUp = () => {
           placeholder="Enter email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <input
           type="password"
@@ -72,6 +77,7 @@ const SignUp = () => {
           placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <button onClick={RegisterData} className="btn btn-primary mt-3">
           Sign Up

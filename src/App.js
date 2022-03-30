@@ -5,6 +5,7 @@ import Footer from "./Header/Footer";
 import SignUp from "./Components/SignUp";
 import PrivateComponent from "./Components/PrivateComponent";
 import Login from "./Components/Login";
+import AddProduct from "./Components/AddProduct";
 function App() {
   return (
     <div className="App">
@@ -15,7 +16,7 @@ function App() {
           after that you can visit this componet */}
           <Route element={<PrivateComponent />}   >
             <Route path="/" element={<h1>Products Listing </h1>} />
-            <Route path="/add" element={<h1>Add products </h1>} />
+            <Route path="/add" element={<AddProduct/>} />
             <Route path="/update" element={<h1> Update Products </h1>} />
             <Route path="/logout" element={<h1> Logout </h1>} />
             <Route path="/profile" element={<h1> Profile Page </h1>} />
