@@ -75,8 +75,8 @@
 .invalid-input {
   display: block;
   color: red;
-  margin-top: -20px;
-  margin-left: 20px;
+  margin-top: 2px;
+  margin-left: 2px;
 }
 
 .product-list {
@@ -86,7 +86,7 @@
 
 .product-list ul li {
   display: inline-block;
-  width: 150px;
+  width: 15%;
   border: 1px solid skyblue;
   padding: 5px;
 }
@@ -109,4 +109,11 @@
 }
 .nav-right{
   text-align: right;
+}
+.btn-del {
+  background: black;
+  color: white;
+  border-radius: 19px;
+  border: 5px solid navajowhite;
+  font-size: 12px;
 }

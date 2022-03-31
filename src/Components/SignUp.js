@@ -8,16 +8,14 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
-
   const Navigate = useNavigate();
 
-  useEffect(()=>{
-      const auth = localStorage.getItem('userSignupData');
-      if(auth){
-          Navigate('/')
-      }
-  })
+  useEffect(() => {
+    const auth = localStorage.getItem("userSignupData");
+    if (auth) {
+      Navigate("/");
+    }
+  });
 
   const RegisterData = () => {
     console.log(name, email, password);
@@ -36,22 +34,22 @@ const SignUp = () => {
       data: data,
     };
 
- axios(config)
+    axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);
       });
-      localStorage.setItem('userSignupData',JSON.stringify(data));
+    localStorage.setItem("userSignupData", JSON.stringify(data));
     // After SignUp it will Redirect on Product Listing Page (Home Page)
-      Navigate("/");
+    Navigate("/");
   };
 
   return (
     <>
       <div className="register-page-div">
-        <h1 style={{textAlign: "center"}}>User REgister </h1>
+        <h1 style={{ textAlign: "center" }}>User REgister </h1>
         <input
           type="text"
           className="form-control"

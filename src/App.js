@@ -6,6 +6,7 @@ import SignUp from "./Components/SignUp";
 import PrivateComponent from "./Components/PrivateComponent";
 import Login from "./Components/Login";
 import AddProduct from "./Components/AddProduct";
+import ProductLists from "./Components/ProductLists";
 function App() {
   return (
     <div className="App">
@@ -15,7 +16,7 @@ function App() {
           {/* withOut SignUp you Can see this comnponet first you have SignUp and
           after that you can visit this componet */}
           <Route element={<PrivateComponent />}   >
-            <Route path="/" element={<h1>Products Listing </h1>} />
+            <Route path="/" element={<ProductLists />} />
             <Route path="/add" element={<AddProduct/>} />
             <Route path="/update" element={<h1> Update Products </h1>} />
             <Route path="/logout" element={<h1> Logout </h1>} />
@@ -30,5 +31,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

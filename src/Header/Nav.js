@@ -11,7 +11,7 @@ const Nav = () => {
     localStorage.clear();
     Navigate('/signup')
   }
-
+  // https://www.positronx.io/how-to-implement-image-cropping-in-react-with-filepond/
   return (
     <>
       <div className="header-div">

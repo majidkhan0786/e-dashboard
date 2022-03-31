@@ -5,10 +5,14 @@ const AddProduct = () => {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [company, setCompany] = useState("");
+  const [error, setError] = useState(false);
 
   const AddItems = () => {
-    // console.log(productName, price, category, company);
-    // const userId = localStorage.getItem()
+    if (!productName || !price || !category || !company) {
+      setError(true);
+      return false;
+    }
+
     var data = JSON.stringify({
       name: productName,
       price: price,
@@ -24,30 +28,42 @@ const AddProduct = () => {
       },
       data: data,
     };
-
     axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        // console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);
       });
   };
 
+  const Handlesubmit = (e)=>{
+    e.preventDefault();
+    setProductName("");
+    setCategory("");
+    setCompany("");
+    setPrice("");
+
+  }
   return (
     <>
       <div className="container">
         <h1>Add Your Products </h1>
 
         <div className="addData-div">
-          <input
+         <form onSubmit={Handlesubmit} >
+         <input
             type="text"
             className="form-control"
             placeholder="Enter Poduct Name"
             value={productName}
-            onChange={(e) => {setProductName(e.target.value)}}
-            required
+            onChange={(e) => {
+              setProductName(e.target.value);
+            }}
           />
+          {error && !productName && (
+            <span className="invalid-input">Enter Valid Product </span>
+          )}
           <input
             type="number"
             className="form-control"
@@ -55,8 +71,8 @@ const AddProduct = () => {
             min={0}
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            required
           />
+          { error && !price && <span className="invalid-input">Characters is NOT  Allowed</span> }
           <input
             type="text"
             className="form-control"
@@ -65,8 +81,8 @@ const AddProduct = () => {
             onChange={(e) => {
               setCategory(e.target.value);
             }}
-            required
           />
+         { error && !category && <span className="invalid-input">Enter Valid Category</span> }
           <input
             type="text"
             className="form-control"
@@ -75,11 +91,12 @@ const AddProduct = () => {
             onChange={(e) => {
               setCompany(e.target.value);
             }}
-            required
           />
+         { error && !company &&  <span className="invalid-input">Enter Valid Company </span>}
           <button onClick={AddItems} className="btn btn-primary mt-2">
             Add Product
           </button>
+         </form>
         </div>
       </div>
     </>
