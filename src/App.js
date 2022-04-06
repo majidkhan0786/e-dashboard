@@ -18,7 +18,7 @@ function App() {
           <Route element={<PrivateComponent />}   >
             <Route path="/" element={<ProductLists />} />
             <Route path="/add" element={<AddProduct/>} />
-            <Route path="/update" element={<h1> Update Products </h1>} />
+            <Route path="/update/:id" element={<h1> Update Products </h1>} />
             <Route path="/logout" element={<h1> Logout </h1>} />
             <Route path="/profile" element={<h1> Profile Page </h1>} />
           </Route>
@@ -31,4 +31,12 @@ function App() {
     </div>
   );
 }
+
 export default App;
+
+
+// How to Find Missing number in Array
+// How to Remove Dupplicate Values from Array
+// Remove Positve and Neagative from Array
+
+

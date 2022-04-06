@@ -43,8 +43,8 @@ const AddProduct = () => {
     setCategory("");
     setCompany("");
     setPrice("");
-
   }
+  
   return (
     <>
       <div className="container">
