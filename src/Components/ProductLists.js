@@ -69,7 +69,7 @@ const ProductLists = () => {
                         >
                           Delete
                         </button>
-                        <Link to = {"/update/" + ListTingData._id}>  </Link>
+                        <Link to = {"/update/" + ListTingData._id}> update </Link>
                       </li>
                       
                     </ul>
